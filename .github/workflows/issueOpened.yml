@@ -10,6 +10,7 @@ jobs:
     name: get security issue by title and body
     steps: 
     - uses: xu-ms/github-actions-issue-to-open@simple-sync
+      id: script
       env:
         title: "${{ github.event.issue.title }}"
         body: "${{ github.event.issue.body }}"
@@ -17,5 +18,5 @@ jobs:
         number: "${{ github.event.issue.number }}"
         html_url: "${{ github.event.issue.html_url }}"
     - run: |
-        jsonData="${{ needs.run-script.outputs.json-data }}"
+        jsonData="${{ needs.script.outputs.json-data }}"
         echo "$jsonData"
