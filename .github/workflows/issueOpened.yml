@@ -16,3 +16,6 @@ jobs:
         created_at: "${{ github.event.issue.created_at }}"
         number: "${{ github.event.issue.number }}"
         html_url: "${{ github.event.issue.html_url }}"
+    - run: |
+        jsonData="${{ needs.run-script.outputs.json-data }}"
+        echo "$jsonData"
