@@ -19,7 +19,7 @@ for (let item1 of first_filter_comb) {
         if ((env_title.includes(item1) && env_title.includes(item2)) || 
         (env_body.includes(item1) && env_body.includes(item2)))
         {
-            console.log("Issue needs Attention!",env_title,env_time)
+            console.log("Issue needs Attention!" + "\n","Issue Title: " + env_title + "\n","Creation Time: " + env_time + "\n")
         }
     }
 };
