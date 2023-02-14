@@ -1,0 +1,20 @@
+name: Notify on New Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email notification
+        uses: ElyssaJyu/Auto-Digest
+        with:
+          server_address: 
+          server_port: 
+          username: 
+          password: 
+          subject: "New Issue Created: ${{ github.event.issue.title }}"
+          body: "A new issue was created in the repository: ${{ github.repository }}. \n\nIssue Details:\n\nTitle: ${{ github.event.issue.title }}\nURL: ${{ github.event.issue.html_url }}\n\n"
+          to: 
