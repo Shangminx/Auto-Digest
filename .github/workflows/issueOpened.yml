@@ -11,7 +11,7 @@ jobs:
     steps: 
     - name: filter issue by keyword
       id: script
-      uses: xu-ms/github-actions-issue-to-open@my-test
+      uses: xu-ms/github-actions-issue-to-open@simple-sync
     - name: get issue info
       if: ${{ steps.script.outputs.need_attention == 'true'}}
       run: |
