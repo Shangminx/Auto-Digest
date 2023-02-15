@@ -15,7 +15,7 @@ jobs:
     - name: need send and get issue info
       if: ${{ steps.script.outputs.need_attention == 'true'}}
       run: |
-        echo "Issue info：${{ steps.script.outputs.issue_info}} "
+        echo "ready to send email"
     - name: do not need send
       if: ${{ steps.script.outputs.need_attention == 'false'}}
       run: echo "${{ github.event.issue.html_url }}"
