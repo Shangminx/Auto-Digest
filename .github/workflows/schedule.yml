@@ -24,7 +24,7 @@ jobs:
       run: | 
         ls -la
     - name: Run python script 
-      working-directory: .github/workflows/
+      working-directory: ${{ github.workspace }}
       shell: bash
       run: | 
         python main.py
