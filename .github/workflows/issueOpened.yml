@@ -12,10 +12,10 @@ jobs:
     - name: filter issue by keyword
       id: script
       uses: xu-ms/github-actions-issue-to-open@simple-sync
-    - name: get issue info
+    - name: need send and get issue info
       if: ${{ steps.script.outputs.need_attention == 'true'}}
       run: |
-        echo "The time was ${{ steps.script.outputs.issue_info}} "
+        echo "Issue info：${{ steps.script.outputs.issue_info}} "
     - name: do not need send
       if: ${{ steps.script.outputs.need_attention == 'false'}}
       run: echo "${{ github.event.issue.html_url }}"
