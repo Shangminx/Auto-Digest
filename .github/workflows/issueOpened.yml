@@ -18,6 +18,8 @@ jobs:
         created_at: "${{ github.event.issue.created_at }}"
         number: "${{ github.event.issue.number }}"
         html_url: "${{ github.event.issue.html_url }}"
+    - name: output
+      run: echo "${{ steps.script.optputs.needAttention }}"
     - name: get issue info
       if: ${{ steps.script.optputs.needAttention == 'true'}}
       run: echo "The time was ${{ fromJSON(steps.script.optputs.issueInfo)}} "
