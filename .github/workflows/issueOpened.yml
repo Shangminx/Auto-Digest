@@ -19,10 +19,10 @@ jobs:
         number: "${{ github.event.issue.number }}"
         html_url: "${{ github.event.issue.html_url }}"
     - name: output
-      run: echo "${{ steps.script.optputs.needAttention }}"
+      run: echo "${{ steps.script.optputs.need_attention }}"
     - name: get issue info
-      if: ${{ steps.script.optputs.needAttention == 'true'}}
-      run: echo "The time was ${{ fromJSON(steps.script.optputs.issueInfo)}} "
+      if: ${{ steps.script.optputs.need_attention == 'true'}}
+      run: echo "The time was ${{ fromJSON(steps.script.optputs.issue_info)}} "
     - name: do not need send
-      if: ${{ steps.script.optputs.needAttention == 'false'}}
+      if: ${{ steps.script.optputs.need_attention == 'false'}}
       run: echo "${{ github.event.issue.html_url }}"
