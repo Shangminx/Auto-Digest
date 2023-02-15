@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     name: get security issue by title and body
     steps: 
-    - uses: xu-ms/github-actions-issue-to-open@simple-sync
+    - name: filter issue by keyword
+      uses: xu-ms/github-actions-issue-to-open@simple-sync
       id: script
       env:
         title: "${{ github.event.issue.title }}"
@@ -17,6 +18,9 @@ jobs:
         created_at: "${{ github.event.issue.created_at }}"
         number: "${{ github.event.issue.number }}"
         html_url: "${{ github.event.issue.html_url }}"
-    - run: |
-        jsonData="${{ needs.script.outputs.json-data }}"
-        echo "$jsonData"
+    - name: get issue info
+      if: ${{ steps.script.optputs.needAttention == 'true'}}
+      run: echo "The time was ${{ fromJSON(steps.script.optputs.issueInfo)}} "
+    - name: do not need send
+      if: ${{ steps.script.optputs.needAttention == 'false'}}
+      run: echo "${{ github.event.issue.html_url }}"
