@@ -11,7 +11,7 @@ jobs:
     name: get summary
     steps:
     - name: Check out repository code
-        uses: actions/checkout@v3
+      uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
