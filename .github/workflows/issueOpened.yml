@@ -11,18 +11,11 @@ jobs:
     steps: 
     - name: filter issue by keyword
       id: script
-      uses: xu-ms/github-actions-issue-to-open@simple-sync
-      env:
-        title: "${{ github.event.issue.title }}"
-        body: "${{ github.event.issue.body }}"
-        created_at: "${{ github.event.issue.created_at }}"
-        number: "${{ github.event.issue.number }}"
-        html_url: "${{ github.event.issue.html_url }}"
-    - name: output
-      run: echo "${{ steps.script.outputs.need_attention }}"
+      uses: xu-ms/github-actions-issue-to-open@my-test
     - name: get issue info
       if: ${{ steps.script.outputs.need_attention == 'true'}}
-      run: echo "The time was ${{ fromJSON(steps.script.outputs.issue_info)}} "
+      run: |
+        echo "The time was ${{ steps.script.outputs.issue_info}} "
     - name: do not need send
       if: ${{ steps.script.outputs.need_attention == 'false'}}
       run: echo "${{ github.event.issue.html_url }}"
