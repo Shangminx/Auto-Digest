@@ -22,7 +22,7 @@ jobs:
     - name: Run ls
       shell: bash
       run: | 
-        ls
+        ls -la
     - name: Run python script 
       working-directory: .github/workflows/
       shell: bash
