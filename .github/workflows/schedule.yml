@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     name: get summary
     steps:
+    - name: Check out repository code
+        uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -26,5 +28,4 @@ jobs:
     - name: Run python script 
       shell: bash
       run: | 
-        cd ${{ github.workspace }}
         python main.py
