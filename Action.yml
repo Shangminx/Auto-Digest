@@ -1,9 +1,10 @@
-name: get issue summary of yesterday
+name: "get issue summary of yesterday"
+description: "This action will make a daily issue summary"
+author: "shangminx"
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron:  '0 1 * * *'
+branding:
+  icon: "book-open"
+  color: "green"
   
 jobs:
   alert:
