@@ -17,9 +17,7 @@ while(not scanover):
     response = requests.get(url, headers=headers)
     issues = response.json()
     for item in issues:
-        print(item['created_at'])
         date_object = datetime.strptime(item['created_at'], '%Y-%m-%dT%H:%M:%SZ').date()
-        print(date_object, datetime.utcnow())
 
         if(date_object < utcdate):
             scanover = True
