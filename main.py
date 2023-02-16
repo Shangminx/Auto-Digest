@@ -40,4 +40,5 @@ while(not scanover):
     page = page + 1
 
 result = {'total': len(issueList), 'issueList': issueList}
-print(result)
+resultjson = json.dumps(result)
+print(resultjson)
