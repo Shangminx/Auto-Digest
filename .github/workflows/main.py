@@ -43,4 +43,3 @@ while(not scanover):
 
 result = {'total': len(issueList), 'issueList': issueList}
 print(result)
-print(f'::set-output name=test_report::{result}')
