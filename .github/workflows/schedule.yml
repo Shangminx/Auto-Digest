@@ -29,9 +29,10 @@ jobs:
       id: pythonscript
       shell: bash
       run: | 
-        python main.py >> $GITHUB_OUTPUT
+        output=$(python main.py)
+        echo "::set-output name=dailysummary::$output"
     - uses: plantree/github-actions-issue-notify-teams@main
       with:
         type: daily-report
-        message: ${{ steps.pythonscript.outputs }}
+        message: ${{ steps.pythonscript.outputs.dailysummary }}
         webhook: ${{ secrets.WEBHOOK }}
