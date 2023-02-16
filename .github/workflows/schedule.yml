@@ -25,7 +25,13 @@ jobs:
       shell: bash
       run: | 
         ls -la
-    - name: Run python script 
+    - name: Run python script
+      id: pythonscript
       shell: bash
       run: | 
         python main.py
+    - uses: plantree/github-actions-issue-notify-teams@main
+      with:
+        type: daily-report
+        message: ${{ steps.pythonscript.outputs }}
+        webhook: ${{ secrets.WEBHOOK }}
