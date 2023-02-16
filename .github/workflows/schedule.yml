@@ -11,3 +11,5 @@ jobs:
     name: get summary
     steps:
     - uses: shangminx/Auto-Digest@main
+      with: 
+        webhook: ${{ secrets.WEBHOOK }}
