@@ -5,7 +5,12 @@ author: "shangminx"
 branding:
   icon: "book-open"
   color: "green"
-  
+
+inputs:
+  webhook:
+    description: "Webhook of Teams Channel"
+    required: true 
+    
 runs:
   using: "composite"
   steps:
@@ -34,4 +39,4 @@ runs:
     with:
       type: daily-report
       message: ${{ steps.pythonscript.outputs.dailysummary }}
-      webhook: ${{ secrets.WEBHOOK }}
+      webhook: ${{ inputs.webhook }}
