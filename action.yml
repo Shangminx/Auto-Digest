@@ -10,6 +10,11 @@ inputs:
   webhook:
     description: "Webhook of Teams Channel"
     required: true 
+
+outputs:
+  dailysummary:
+    description: "the daily summary of issues"
+    value: ${{ steps.pythonscript.outputs.dailysummary }}
     
 runs:
   using: "composite"
@@ -35,8 +40,3 @@ runs:
     shell: bash
     run: |
       echo "${{ steps.pythonscript.outputs.dailysummary }}"
-  - uses: plantree/github-actions-issue-notify-teams@main
-    with:
-      type: daily-report
-      message: ${{ steps.pythonscript.outputs.dailysummary }}
-      webhook: ${{ inputs.webhook }}
