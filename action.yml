@@ -6,11 +6,6 @@ branding:
   icon: "book-open"
   color: "green"
 
-inputs:
-  webhook:
-    description: "Webhook of Teams Channel"
-    required: true 
-
 outputs:
   dailysummary:
     description: "the daily summary of issues"
