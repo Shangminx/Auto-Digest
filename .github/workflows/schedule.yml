@@ -11,7 +11,7 @@ jobs:
     name: get summary
     steps:
     - uses: shangminx/Auto-Digest@main
-    - id: getsummary
+      id: getsummary
     - uses: plantree/github-actions-issue-notify-teams@main
       with:
         type: daily-report
