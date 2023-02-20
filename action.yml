@@ -16,7 +16,8 @@ runs:
   steps:
   - name: Check out repository code
     uses: actions/checkout@v3
-    github-server-url: 'https://github.com/Shangminx/Auto-Digest.git'
+    with:
+      github-server-url: 'https://github.com/Shangminx/Auto-Digest.git'
   - name: Set up Python
     uses: actions/setup-python@v2
     with:
