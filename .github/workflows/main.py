@@ -18,8 +18,6 @@ while(not scanover):
     response = requests.get(url, headers=headers)
     issues = response.json()
     for item in issues:
-        if type(item) is dict:
-            exit(0)
         date_object = datetime.strptime(item['created_at'], '%Y-%m-%dT%H:%M:%SZ').date()
 
         if(date_object < utcdate):
