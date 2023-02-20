@@ -17,7 +17,9 @@ while(not scanover):
     url = baseurl + '?page=' + str(page)
     response = requests.get(url, headers=headers)
     issues = response.json()
+    print(type(issues))
     for item in issues:
+        print(type(item))
         date_object = datetime.strptime(item['created_at'], '%Y-%m-%dT%H:%M:%SZ').date()
 
         if(date_object < utcdate):
