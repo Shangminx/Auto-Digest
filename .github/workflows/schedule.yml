@@ -3,7 +3,7 @@ name: get issue summary of yesterday
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 1 * * *'
+    - cron:  '0 17 * * *'
   
 jobs:
   alert:
