@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: shangminx/Auto-Digest@main
       id: getsummary
-    - uses: shangminx/Auto-Digest/email@main
+    - uses: shangminx/Auto-Digest/sendEmail@main
       id: sendEmail
    #- uses: plantree/github-actions-issue-notify-teams@main
    #  with:
