@@ -14,6 +14,9 @@ inputs:
   recipient_email:
     description: "to email"
     require: true
+  report_data:
+    description: "daily report json string"
+    require: true
 outputs:
   issue_info:
     description: "opened issue info"
