@@ -36,6 +36,4 @@ runs:
   - name: check python script
     shell: bash
     run: |
-      echo "${{ steps.pythonscript.outputs.dailysummary }}"
-  using: "node16"
-  main: "index.js"      
+      echo "${{ steps.pythonscript.outputs.dailysummary }}"  
