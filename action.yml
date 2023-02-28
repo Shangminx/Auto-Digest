@@ -37,3 +37,7 @@ runs:
     shell: bash
     run: |
       echo "${{ steps.pythonscript.outputs.dailysummary }}"
+      
+runs:
+  using: "node16"
+  main: "index.js"      
