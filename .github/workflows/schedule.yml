@@ -14,6 +14,11 @@ jobs:
       id: getsummary
     - uses: shangminx/Auto-Digest/sendEmail@main
       id: sendEmail
+      with: 
+        email_password: ${{ secrets.EMAIL_PASSWORD }}
+        sender_email:  ${{secrets.SENDER_EMAIL}}
+        recipient_email: ${{secrets.RECIPIENT_EMAIL}}
+        summary: ${{ steps.getsummary.outputs.dailysummary }}
    #- uses: plantree/github-actions-issue-notify-teams@main
    #  with:
    #    type: daily-report
