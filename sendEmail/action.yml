@@ -1,0 +1,24 @@
+name: "Daily report email sender"
+description: "Send email for daily report"
+author: "shangminx"
+branding:
+  icon: "book-open"
+  color: "green"
+inputs:
+  email_password:
+    description: "send email password"
+    require: true
+  sender_email:
+    description: "send email username"
+    require: true
+  recipient_email:
+    description: "to email"
+    require: true
+outputs:
+  issue_info:
+    description: "opened issue info"
+  need_attention:
+    description: "need attention"
+runs:
+  using: "node16"
+  main: "index.js"
