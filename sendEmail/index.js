@@ -45,30 +45,13 @@ function sendMail(email_username, email_password, email_to, report_data) {
                                             <a href="#" style="text-decoration: none;">
                                                 <p style="color:white;
                                                         font-weight:bold; font-size: 18px">
-                                                    GitHub Auto-Digest Bot
+                                                    Daily report about issues
                                                 </p>
                                             </a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </td>
-                    </tr>
-                    <tr style="height: 300px;">
-                        <td align="center" style="border: none;
-                                border-bottom: 2px solid #188cd9; 
-                                padding-right: 20px;padding-left:20px">
-        
-                            <p style="font-weight: bolder;font-size: 42px;
-                                    letter-spacing: 0.025em;
-                                    color:red" class="small">
-                                    Alarm!
-                            </p>
-                            <p style="font-weight: bolder;font-size: 36px;
-                                    letter-spacing: 0.025em;
-                                    color:black" class="small">
-                                    New high priority issue need to look into!
-                            </p>
                         </td>
                     </tr>
         
@@ -125,7 +108,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
     let mailOptions = {
         from: email_username,
         to: email_to,
-        subject: 'Alarm: new high priority issue need to look into!',
+        subject: 'Daily report about issues',
         html: emailContent,
         priority: "high"
     };
