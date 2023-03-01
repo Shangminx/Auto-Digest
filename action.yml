@@ -32,9 +32,9 @@ runs:
     shell: bash
     run: | 
       output=$(python .github/workflows/main.py)
-      echo "::set-output name=dailysummary::$output"
+      echo '::set-output name=dailysummary::$output'
   - name: check python script
     shell: bash
     run: |
-      echo "${{ steps.pythonscript.outputs.dailysummary }}"
+      echo '${{ steps.pythonscript.outputs.dailysummary }}'
 
