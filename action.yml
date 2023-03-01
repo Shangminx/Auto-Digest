@@ -36,4 +36,5 @@ runs:
   - name: check python script
     shell: bash
     run: |
-      echo "${{ steps.pythonscript.outputs.dailysummary }}"  
+      echo "${{ steps.pythonscript.outputs.dailysummary }}"
+
