@@ -29,48 +29,45 @@ function main(email_username, email_password, email_to, report_data) {
 function sendMail(email_username, email_password, email_to, report_data) {
 
     var listcontent = ""
-    if(report_data.total == 0)
-    {
-        listcontent = `
-                            <h2 style="text-align: center; align-items: center;">
-                                No issue yesterday
-                            </h2>
-        `
-    }
     for(let i = 0; i < report_data.total; i++)
     {
         listcontent = listcontent + `
-                            <h2 style="text-align: left; align-items: center;">
-                                Title: ${report_data.issueList[i].issueName}
-                            </h2>
-                            <p>
-                                <a href=${report_data.issueList[i].issueLink}
-                                style="text-align: justify-all;
-                                align-items: center; 
-                                font-size: 15px;
-                                padding-bottom: 6px;"> 
-                                ${report_data.issueList[i].issueLink}
-                                </a>
-                            </p>
-                            <p class="data" 
-                                style="text-align: justify-all;
-                                align-items: center; 
-                                font-size: 15px;
-                                padding-bottom: 6px;">
-                                Tag: ${report_data.issueList[i].issueTags}
-                            </p>
-                            <p class="data" 
-                                style="text-align: justify-all;
-                                align-items: center; 
-                                font-size: 15px;
-                                padding-bottom: 16px;">
-                                Assignee: ${report_data.issueList[i].issueAssignee}
-                            </p>
+                    <tr>
+                        <td>${report_data.issueList[i].issueName}</td>
+                        <td><a href=${report_data.issueList[i].issueLink}>${report_data.issueList[i].issueLink}</a></td>
+                        <td>${report_data.issueList[i].issueTags}</td>
+                        <td>${report_data.issueList[i].issueAssignee}</td>
+                    </tr>
         `
     }
     const emailContent = `
+    <style>
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        }
+        
+        th, td {
+        text-align: left;
+        padding: 8px;
+        }
+        
+        th {
+        background-color: #222;
+        color: #fff;
+        }
+        
+        /* tr:nth-child(even) {
+        background-color: #f2f2f2;
+        }
+        tr {
+        }
+        tr:hover {
+        background-color: #ddd;
+        } */
+    </style>
     <html>
-        <body style="background-color:grey">
+        <body style="background-color:white">
             <table align="center" border="0" cellpadding="0" cellspacing="0"
                 width="550" bgcolor="white" style="border:2px solid black">
                 <tbody>
@@ -82,7 +79,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
                                     <tr>
                                         <td align="center" style="background-color: #188cd9;;
                                                 height: 50px;">
-                                            <a href="#" style="text-decoration: none;">
+                                            <a align="center" href="#" style="text-decoration: none;">
                                                 <p style="color:white;
                                                         font-weight:bold; font-size: 18px">
                                                     GitHub Auto-Digest Bot
@@ -94,20 +91,36 @@ function sendMail(email_username, email_password, email_to, report_data) {
                             </table>
                         </td>
                     </tr>
+                    <tr style="height: 30px;">
+                        <td align="center" style="border: none;
+                                border-bottom: 2px solid #188cd9; 
+                                padding-right: 20px;padding-left:20px">
         
-                    <tr style="display: inline-block;">
-                        <td style="height: 150px;
-                                padding: 20px;
-                                border: none; 
-                                border-bottom: 2px solid #361B0E;
-                                background-color: white;">
-                            
-                            <h1 style="text-align: center; align-items: center;">
-                                Daily issue list
-                            </h1>
-                            ${listcontent}
+                            <p align="center" style="font-weight: bolder;font-size: 36px;
+                                    letter-spacing: 0.025em;
+                                    color:black" class="small">
+                                    <script>
+                                        date = new Date().toLocaleDateString();
+                                        document.write(date);
+                                    </script>
+                                    Daily Isssue 
+                            </p>
                         </td>
                     </tr>
+
+                    <table>
+                        <thead>
+                        <tr align="center">
+                            <th>IssueName</th>
+                            <th>IssueLink</th>
+                            <th>TAG</th>
+                            <th>Assignee</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        ${listcontent}
+                        </tbody>
+                    </table>
                 </tbody>
             </table>
         </body>
