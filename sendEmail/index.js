@@ -79,6 +79,9 @@ function sendMail(email_username, email_password, email_to, report_data) {
                                 border-bottom: 2px solid #361B0E;
                                 background-color: white;">
                             
+                            <h1 style="text-align: center; align-items: center;">
+                                Daily issue list
+                            </h1>
                             <h2 style="text-align: left; align-items: center;">
                                 Issue Title: ${report_data.total}
                             </h2>
