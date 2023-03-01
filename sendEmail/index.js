@@ -40,7 +40,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
                                 style="text-align: justify-all;
                                 align-items: center; 
                                 font-size: 15px;
-                                padding-bottom: 12px;"> 
+                                padding-bottom: 6px;"> 
                                 ${report_data.issueList[i].issueLink}
                                 </a>
                             </p>
@@ -48,7 +48,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
                                 style="text-align: justify-all;
                                 align-items: center; 
                                 font-size: 15px;
-                                padding-bottom: 12px;">
+                                padding-bottom: 6px;">
                                 Tag: ${report_data.issueList[i].issueTags}
                             </p>
                             <p class="data" 
