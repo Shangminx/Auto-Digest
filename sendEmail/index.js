@@ -91,7 +91,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
                             </table>
                         </td>
                     </tr>
-                    <tr style="height: 30px;">
+                    <tr>
                         <td align="center" style="border: none;
                                 border-bottom: 2px solid #188cd9; 
                                 padding-right: 20px;padding-left:20px">
