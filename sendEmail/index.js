@@ -44,7 +44,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
     <style>
         table {
         border-collapse: collapse;
-        width: 100%;
+        width: 90%;
         }
         
         th, td {
