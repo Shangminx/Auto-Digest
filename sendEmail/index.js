@@ -3,11 +3,9 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const nodemailer = require('nodemailer');
 
-const issue = github.context.payload.issue;
 const email_password = core.getInput('email_password');
 const email_username = core.getInput('sender_email');
 const email_to = core.getInput('recipient_email').split(';');
-core.debug(issue)
 
 const keywords_lists = [
     ["privacy", "theft", "steal", "leak"],
@@ -16,73 +14,38 @@ const keywords_lists = [
     ["send", "user", "Microsoft","content"] 
 ]
 
-core.debug(issue)
   
-main(email_username, email_password, email_to, issue)
+main(email_username, email_password, email_to)
 
-function main(email_username, email_password, email_to, issue) {
-    var need_attention = false;
+function main(email_username, email_password, email_to) {
     try {
-        //any word in the 1st item of keywords_lists
-        if ((issue.title.match(new RegExp(keywords_lists[0].join('|', 'gi')))) || 
-            (issue.body.match(new RegExp(keywords_lists[0].join('|', 'gi'))))){
-                setOutput_sendEmail(email_username, email_password, email_to, issue);
-                need_attention = true;
-        }
-        else{
-            //4 words coexist in the 4th item of keywords_lists
-            if (keywords_lists[3].every(coexist_keywords => 
-                (issue.title.includes(coexist_keywords) || issue.body.includes(coexist_keywords)))){
-                    setOutput_sendEmail(email_username, email_password, email_to, issue);
-                    need_attention = true;
-            }else{
-                //any word from 2nd item shows together with any word from 3nd item in the keywords_lists
-                for (let i = 0; i < keywords_lists[1].length; i++) {
-                    const firstKeyword = keywords_lists[1][i];
-                    for (let j = 0; j < keywords_lists[2].length; j++) {
-                      const secondKeyword = keywords_lists[2][j];
-                      if ((issue.title.match(new RegExp(`\\b${firstKeyword}\\b.*\\b${secondKeyword}\\b`, 'gi'))) ||
-                            (issue.body.match(new RegExp(`\\b${firstKeyword}\\b.*\\b${secondKeyword}\\b`, 'gi')))) {
-                                setOutput_sendEmail(email_username, email_password, email_to, issue);
-                                need_attention = true;
-                                break;
-                      }
-                    }
-                    if (need_attention) {
-                        break;
-                    }
-                }
-            }
-        }
-        if (!need_attention) {
-            core.setOutput("need_attention", 'false');
-        }
+        setOutput_sendEmail(email_username, email_password, email_to);
     }
     catch (err) {
         core.setFailed(`Error ${err}`);
     }
 }
 
-function setOutput_sendEmail(email_username, email_password, email_to, issue) {
+function setOutput_sendEmail(email_username, email_password, email_to) {
     var data = {
         "title": "privacy",
-        "issueName": issue.title,
-        "issueLink": issue.html_url,
-        "issueNumber": issue.number,
-        "issueCreateTime": issue.created_at
+        "issueName": "123",
+        "issueLink": "234",
+        "issueNumber": 345,
+        "issueCreateTime": "456"
     }
     var jsonData = JSON.stringify(data);
     core.setOutput("need_attention", 'true');
     core.setOutput("issue_info", jsonData);
     core.notice("Alarm: new high priority issue need to look into!\n" + issue.html_url)
     try {
-        sendMail(email_username, email_password, email_to, issue);
+        sendMail(email_username, email_password, email_to);
     } catch (err) {
         core.error(err.message)
     }
 }
 
-function sendMail(email_username, email_password, email_to, issue) {
+function sendMail(email_username, email_password, email_to) {
 
     const emailContent = `
     <html>
@@ -136,24 +99,24 @@ function sendMail(email_username, email_password, email_to, issue) {
                                 background-color: white;">
                             
                             <h2 style="text-align: left; align-items: center;">
-                                Issue Title: ${issue.title}
+                                Issue Title: 123
                             </h2>
                             <p class="data" 
                                 style="text-align: justify-all;
                                 align-items: center; 
                                 font-size: 15px;
                                 padding-bottom: 12px;">
-                                Issue Number: ${issue.number}
+                                Issue Number: 234
                             </p>
                             <p class="data" 
                                 style="text-align: justify-all;
                                 align-items: center; 
                                 font-size: 15px;
                                 padding-bottom: 12px;">
-                                Issue Create Time: ${issue.created_at}
+                                Issue Create Time: 345
                             </p>
                             <p>
-                                <a href="${issue.html_url}"
+                                <a href="456"
                                 style="text-decoration: none; 
                                         color:black; 
                                         border: 2px solid #188cd9; 
