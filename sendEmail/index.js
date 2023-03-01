@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 
 const email_password = core.getInput('email_password');
 const email_username = core.getInput('sender_email');
+const report_data = JSON.parse(core.getInput('report_data'));
 const email_to = core.getInput('recipient_email').split(';');
 
 const keywords_lists = [
@@ -13,23 +14,22 @@ const keywords_lists = [
     ["data", "password", "profile"], 
     ["send", "user", "Microsoft","content"] 
 ]
-
   
-main(email_username, email_password, email_to)
+main(email_username, email_password, email_to, report_data)
 
-function main(email_username, email_password, email_to) {
+function main(email_username, email_password, email_to, report_data) {
     try {
-        setOutput_sendEmail(email_username, email_password, email_to);
+        setOutput_sendEmail(email_username, email_password, email_to, report_data);
     }
     catch (err) {
         core.setFailed(`Error ${err}`);
     }
 }
 
-function setOutput_sendEmail(email_username, email_password, email_to) {
+function setOutput_sendEmail(email_username, email_password, email_to, report_data) {
     var data = {
         "title": "privacy",
-        "issueName": "123",
+        "issueName": report_data.total,
         "issueLink": "234",
         "issueNumber": 345,
         "issueCreateTime": "456"
@@ -39,13 +39,13 @@ function setOutput_sendEmail(email_username, email_password, email_to) {
     core.setOutput("issue_info", jsonData);
     core.notice("Alarm: new high priority issue need to look into!\n")
     try {
-        sendMail(email_username, email_password, email_to);
+        sendMail(email_username, email_password, email_to, report_data);
     } catch (err) {
         core.error(err.message)
     }
 }
 
-function sendMail(email_username, email_password, email_to) {
+function sendMail(email_username, email_password, email_to, report_data) {
 
     const emailContent = `
     <html>
@@ -99,7 +99,7 @@ function sendMail(email_username, email_password, email_to) {
                                 background-color: white;">
                             
                             <h2 style="text-align: left; align-items: center;">
-                                Issue Title: 123
+                                Issue Title: ${report_data.total}
                             </h2>
                             <p class="data" 
                                 style="text-align: justify-all;
