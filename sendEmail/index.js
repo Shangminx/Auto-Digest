@@ -28,7 +28,7 @@ function main(email_username, email_password, email_to, report_data) {
 
 function sendMail(email_username, email_password, email_to, report_data) {
 
-    const listcontent = ""
+    var listcontent = ""
     for(let i = 0; i < report_data.total; i++)
     {
         listcontent = listcontent + `
