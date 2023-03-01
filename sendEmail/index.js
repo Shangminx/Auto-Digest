@@ -45,13 +45,30 @@ function sendMail(email_username, email_password, email_to, report_data) {
                                             <a href="#" style="text-decoration: none;">
                                                 <p style="color:white;
                                                         font-weight:bold; font-size: 18px">
-                                                    Daily report about issues
+                                                    GitHub Auto-Digest Bot
                                                 </p>
                                             </a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                        </td>
+                    </tr>
+                    <tr style="height: 300px;">
+                        <td align="center" style="border: none;
+                                border-bottom: 2px solid #188cd9; 
+                                padding-right: 20px;padding-left:20px">
+        
+                            <p style="font-weight: bolder;font-size: 42px;
+                                    letter-spacing: 0.025em;
+                                    color:red" class="small">
+                                    Alarm!
+                            </p>
+                            <p style="font-weight: bolder;font-size: 36px;
+                                    letter-spacing: 0.025em;
+                                    color:black" class="small">
+                                    New high priority issue need to look into!
+                            </p>
                         </td>
                     </tr>
         
@@ -64,6 +81,34 @@ function sendMail(email_username, email_password, email_to, report_data) {
                             
                             <h2 style="text-align: left; align-items: center;">
                                 Issue Title: ${report_data.total}
+                            </h2>
+                            <p class="data" 
+                                style="text-align: justify-all;
+                                align-items: center; 
+                                font-size: 15px;
+                                padding-bottom: 12px;">
+                                Issue Number: 234
+                            </p>
+                            <p class="data" 
+                                style="text-align: justify-all;
+                                align-items: center; 
+                                font-size: 15px;
+                                padding-bottom: 12px;">
+                                Issue Create Time: 345
+                            </p>
+                            <p>
+                                <a href="456"
+                                style="text-decoration: none; 
+                                        color:black; 
+                                        border: 2px solid #188cd9; 
+                                        padding: 10px 30px;
+                                        font-weight: bold;"> 
+                                View Issue 
+                                </a>
+                            </p>
+
+                            <h2 style="text-align: left; align-items: center;">
+                                Issue Title: ${report_data.total+1}
                             </h2>
                             <p class="data" 
                                 style="text-align: justify-all;
