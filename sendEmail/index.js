@@ -29,6 +29,15 @@ function main(email_username, email_password, email_to, report_data) {
 function sendMail(email_username, email_password, email_to, report_data) {
 
     var listcontent = ""
+    if(report_data.total == 5)
+    {
+        listcontent = `
+                            <h2 style="text-align: center; align-items: center;">
+                                No issue yesterday
+                            </h2>
+        `
+        report_data.total = 0
+    }
     for(let i = 0; i < report_data.total; i++)
     {
         listcontent = listcontent + `
