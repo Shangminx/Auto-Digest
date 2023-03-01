@@ -33,30 +33,29 @@ function sendMail(email_username, email_password, email_to, report_data) {
     {
         listcontent = listcontent + `
                             <h2 style="text-align: left; align-items: center;">
-                                Issue Title: ${report_data.issueList[i].issueName}
+                                Title: ${report_data.issueList[i].issueName}
                             </h2>
                             <p class="data" 
                                 style="text-align: justify-all;
                                 align-items: center; 
                                 font-size: 15px;
                                 padding-bottom: 12px;">
-                                Issue Number: 234
+                                Tag: ${report_data.issueList[i].issueTags}
                             </p>
                             <p class="data" 
                                 style="text-align: justify-all;
                                 align-items: center; 
                                 font-size: 15px;
                                 padding-bottom: 12px;">
-                                Issue Create Time: 345
+                                Assignee: ${report_data.issueList[i].issueAssignee}
                             </p>
                             <p>
-                                <a href="456"
-                                style="text-decoration: none; 
-                                        color:black; 
-                                        border: 2px solid #188cd9; 
-                                        padding: 10px 30px;
-                                        font-weight: bold;"> 
-                                View Issue 
+                                <a href=${report_data.issueList[i].issueLink}
+                                style="text-align: justify-all;
+                                align-items: center; 
+                                font-size: 15px;
+                                padding-bottom: 12px;"> 
+                                ${report_data.issueList[i].issueLink}
                                 </a>
                             </p>
         `
