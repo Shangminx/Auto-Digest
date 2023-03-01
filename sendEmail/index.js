@@ -28,6 +28,39 @@ function main(email_username, email_password, email_to, report_data) {
 
 function sendMail(email_username, email_password, email_to, report_data) {
 
+    const listcontent = ""
+    for(let i = 0; i < report_data_data.total; i++)
+    {
+        listcontent = listcontent + `
+                            <h2 style="text-align: left; align-items: center;">
+                                Issue Title: ${report_data.issueList[i].issueName}
+                            </h2>
+                            <p class="data" 
+                                style="text-align: justify-all;
+                                align-items: center; 
+                                font-size: 15px;
+                                padding-bottom: 12px;">
+                                Issue Number: 234
+                            </p>
+                            <p class="data" 
+                                style="text-align: justify-all;
+                                align-items: center; 
+                                font-size: 15px;
+                                padding-bottom: 12px;">
+                                Issue Create Time: 345
+                            </p>
+                            <p>
+                                <a href="456"
+                                style="text-decoration: none; 
+                                        color:black; 
+                                        border: 2px solid #188cd9; 
+                                        padding: 10px 30px;
+                                        font-weight: bold;"> 
+                                View Issue 
+                                </a>
+                            </p>
+        `
+    }
     const emailContent = `
     <html>
         <body style="background-color:grey">
@@ -82,33 +115,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
                             <h1 style="text-align: center; align-items: center;">
                                 Daily issue list
                             </h1>
-                            <h2 style="text-align: left; align-items: center;">
-                                Issue Title: ${report_data.total}
-                            </h2>
-                            <p class="data" 
-                                style="text-align: justify-all;
-                                align-items: center; 
-                                font-size: 15px;
-                                padding-bottom: 12px;">
-                                Issue Number: 234
-                            </p>
-                            <p class="data" 
-                                style="text-align: justify-all;
-                                align-items: center; 
-                                font-size: 15px;
-                                padding-bottom: 12px;">
-                                Issue Create Time: 345
-                            </p>
-                            <p>
-                                <a href="456"
-                                style="text-decoration: none; 
-                                        color:black; 
-                                        border: 2px solid #188cd9; 
-                                        padding: 10px 30px;
-                                        font-weight: bold;"> 
-                                View Issue 
-                                </a>
-                            </p>
+                            ${listcontent}
 
                             <h2 style="text-align: left; align-items: center;">
                                 Issue Title: ${report_data.total+1}
