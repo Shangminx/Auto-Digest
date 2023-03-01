@@ -29,7 +29,7 @@ function main(email_username, email_password, email_to, report_data) {
 function sendMail(email_username, email_password, email_to, report_data) {
 
     const listcontent = ""
-    for(let i = 0; i < report_data_data.total; i++)
+    for(let i = 0; i < report_data.total; i++)
     {
         listcontent = listcontent + `
                             <h2 style="text-align: left; align-items: center;">
