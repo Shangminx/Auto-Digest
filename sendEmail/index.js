@@ -19,29 +19,10 @@ main(email_username, email_password, email_to, report_data)
 
 function main(email_username, email_password, email_to, report_data) {
     try {
-        setOutput_sendEmail(email_username, email_password, email_to, report_data);
+        sendMail(email_username, email_password, email_to, report_data);
     }
     catch (err) {
         core.setFailed(`Error ${err}`);
-    }
-}
-
-function setOutput_sendEmail(email_username, email_password, email_to, report_data) {
-    var data = {
-        "title": "privacy",
-        "issueName": report_data.total,
-        "issueLink": "234",
-        "issueNumber": 345,
-        "issueCreateTime": "456"
-    }
-    var jsonData = JSON.stringify(data);
-    core.setOutput("need_attention", 'true');
-    core.setOutput("issue_info", jsonData);
-    core.notice("Alarm: new high priority issue need to look into!\n")
-    try {
-        sendMail(email_username, email_password, email_to, report_data);
-    } catch (err) {
-        core.error(err.message)
     }
 }
 
