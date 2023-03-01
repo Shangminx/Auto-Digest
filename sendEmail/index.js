@@ -37,7 +37,7 @@ function setOutput_sendEmail(email_username, email_password, email_to) {
     var jsonData = JSON.stringify(data);
     core.setOutput("need_attention", 'true');
     core.setOutput("issue_info", jsonData);
-    core.notice("Alarm: new high priority issue need to look into!\n" + issue.html_url)
+    core.notice("Alarm: new high priority issue need to look into!\n")
     try {
         sendMail(email_username, email_password, email_to);
     } catch (err) {
