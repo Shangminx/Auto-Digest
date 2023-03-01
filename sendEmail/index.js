@@ -44,7 +44,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
     <style>
         table {
         border-collapse: collapse;
-        width: 90%;
+        width: 100%;
         }
         
         th, td {
@@ -69,7 +69,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
     <html>
         <body style="background-color:white">
             <table align="center" border="0" cellpadding="0" cellspacing="0"
-                width="550" bgcolor="white" style="border:2px solid black">
+                bgcolor="white" style="border:2px solid black">
                 <tbody>
                     <tr>
                         <td align="center">
