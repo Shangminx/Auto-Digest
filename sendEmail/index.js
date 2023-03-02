@@ -138,7 +138,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
     let mailOptions = {
         from: email_username,
         to: email_to,
-        subject: 'Daily report about issues',
+        subject: '[WV2 Github Feedback] Daily report on new issues',
         html: emailContent,
         priority: "high"
     };
