@@ -29,6 +29,7 @@ for retrytimes in range(tries):
 
                 newissue = {}
                 newissue['issueName'] = item['title']
+                newissue['issueName'] = """asdf"t"""
                 newissue['issueLink'] = item['html_url']
                 tags = []
                 for label in item['labels']:
