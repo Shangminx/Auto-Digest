@@ -28,8 +28,7 @@ for retrytimes in range(tries):
                     break
 
                 newissue = {}
-                #newissue['issueName'] = item['title']
-                newissue['issueName'] = """asdf"t"""
+                newissue['issueName'] = item['title']
                 newissue['issueLink'] = item['html_url']
                 tags = []
                 for label in item['labels']:
