@@ -35,4 +35,4 @@ runs:
       outputstr=${output//'/\'}
       outputstr=${outputstr//\"/\\"}
       echo "::set-output name=dailysummary::$output"
-      echo "$outputstr"
+      echo "$outputstr""
