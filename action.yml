@@ -31,7 +31,8 @@ runs:
     id: pythonscript
     shell: bash
     run: | 
-      output=$(python .github/workflows/main.py)
+      rawoutput=$(python .github/workflows/main.py)
+      output=${rawoutput/\'/'"'}
       echo "::set-output name=dailysummary::$output"
   - name: check python script
     shell: bash
