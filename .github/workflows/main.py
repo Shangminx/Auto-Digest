@@ -46,7 +46,7 @@ for retrytimes in range(tries):
         result = {'total': len(issueList), 'issueList': issueList}
         resultjson = json.dumps(result)
         print(resultjson)
-    except KeyError as e:
+    except e:
         if retrytimes < tries - 1:
             continue
         else:
