@@ -32,7 +32,7 @@ runs:
     shell: bash
     run: | 
       rawoutput=$(python .github/workflows/main.py)
-      output=${rawoutput/\'/'"'}
+      output=${rawoutput/\'/"\'"}
       echo "::set-output name=dailysummary::$output"
   - name: check python script
     shell: bash
