@@ -32,8 +32,8 @@ runs:
     shell: bash
     run: | 
       rawoutput=$(python .github/workflows/main.py)
-      output=${rawoutput/\'/"\'"}
-      output=${output/\"/"\\\""}
+      output=${rawoutput//\'/"\'"}
+      output=${output//\"/"\\\""}
       echo "::set-output name=dailysummary::$output"
   - name: check python script
     shell: bash
