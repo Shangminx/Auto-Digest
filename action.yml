@@ -36,9 +36,8 @@ runs:
   - name: check python script
     shell: bash
     run: |
-      rawoutput = ${{ steps.pythonscript.outputs.dailysummary }}
-      output = $(rawoutput//\'/"\\\'")
-      output = $(output//\"/"\\\"")
-      echo "${{ steps.pythonscript.outputs.dailysummary }}"
+      outputstr = $(${{ steps.pythonscript.outputs.dailysummary }}//\'/"\\\'")
+      outputstr = $(outputstr//\"/"\\\"")
+      echo "$outputstr"
       
 
