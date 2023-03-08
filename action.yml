@@ -32,12 +32,9 @@ runs:
     shell: bash
     run: | 
       output=$(python .github/workflows/main.py)
+      outputstr = $(output//\'/"\\\'")
+      outputstr = $(output//\"/"\\\"")
       echo "::set-output name=dailysummary::$output"
-  - name: check python script
-    shell: bash
-    run: |
-      outputstr = $(${{ steps.pythonscript.outputs.dailysummary }}//\'/"\\\'")
-      outputstr = $(outputstr//\"/"\\\"")
       echo "$outputstr"
       
 
