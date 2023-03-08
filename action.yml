@@ -32,7 +32,7 @@ runs:
     shell: bash
     run: | 
       output=$(python .github/workflows/main.py)
-      outputstr = ${output//\'/"\\\'"}
-      outputstr = ${outputstr//\"/"\\\""}
+      outputstr=${output//\'/"\\\'"}
+      outputstr=${outputstr//\"/"\\\""}
       echo "::set-output name=dailysummary::$output"
       echo "$outputstr"
