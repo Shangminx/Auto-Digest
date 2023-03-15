@@ -2,8 +2,6 @@ const { includes } = require("resium");
 const core = require('@actions/core');
 const github = require('@actions/github');
 const nodemailer = require('nodemailer');
-const express = require('express')
-const app = express()
 
 const email_password = core.getInput('email_password');
 const email_username = core.getInput('sender_email');
@@ -144,40 +142,19 @@ function sendMail(email_username, email_password, email_to, report_data) {
         html: emailContent,
         priority: "high"
     };
-    
-    const promiseWrapper = mailOptions => new Promise((resolve, reject) => {
-        transporter.sendMail(mailOptions, (error, info) => {
+
+    for(let i = 0; i < 3; i++)
+    {
+        transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
-                reject(error);
-                return;
+                core.error(error);
+            } else {
+                i = 3
+                core.info('Email sent: ' + i.toString() + info.response);
             }
-            resolve(info);
-        })
-    });
-        
-    app.post('/sendmail', async (req, res) => {
-        let info;
-        let error;
+        });
+    }
 
-        for (let i = 0; i < 3; i++) {
-            try {
-              info = await promiseWrapper(mailOptions);
-              break;
-            } catch (e) {
-              error = e;
-            }
-        }
-
-      if (error) {
-          core.error(error);
-      } else {
-          core.info('Email sent: ' + info.response);
-      }
-        
-      info 
-        ? res.status(200).json({ message: "Mail Sent", response: info.response })
-        : res.status(500).json({ message: "Mail not send", error });
-    });
 }
 
 module.exports = {
