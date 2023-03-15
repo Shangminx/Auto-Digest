@@ -146,7 +146,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
     function retryFunc(error, info, times)
     {
         if(error && times > 0) {
-            core.info('retry times: ' + times.toString() + error)
+            core.info('retry times: ' + times.toString() + '. ' + error)
             transporter.sendMail(mailOptions, (error, info) => retryFunc(error, info, times-1))
         } else if(error) {
             core.error(error)
