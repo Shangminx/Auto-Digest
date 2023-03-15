@@ -149,8 +149,8 @@ function sendMail(email_username, email_password, email_to, report_data) {
                 reject(error);
                 return;
             }
-        resolve(info);
-    });
+            resolve(info);
+        }});
         
     app.post('/sendmail', async (req, res) => {
         let info;
