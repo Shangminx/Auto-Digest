@@ -167,7 +167,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
 
       info 
         ? res.status(200).json({ message: "Mail Sent", response: info.response })
-        : res.status(500).json({ message: "Mail not send", error }));
+        : res.status(500).json({ message: "Mail not send", error });
     });
 }
 
