@@ -150,7 +150,8 @@ function sendMail(email_username, email_password, email_to, report_data) {
                 return;
             }
             resolve(info);
-        }});
+        })
+    });
         
     app.post('/sendmail', async (req, res) => {
         let info;
