@@ -143,17 +143,19 @@ function sendMail(email_username, email_password, email_to, report_data) {
         priority: "high"
     };
 
-    for(let i = 0; i < 3; i++)
+    function retryFunc(error, info, times)
     {
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                core.error(error);
-            } else {
-                i = 3
-                core.info('Email sent: ' + i.toString() + info.response);
-            }
-        });
+        if(error && times > 0) {
+            core.info('retry times: ' + times.toString() + error)
+            transporter.sendMail(mailOptions, (error, info) => retryFunc(error, info, times-1))
+        } else if(error) {
+            core.error(error)
+        } else {
+            core.info('Email sent: ' + info.response);
+        }     
     }
+
+    transporter.sendMail(mailOptions, (error, info) => retryFunc(error, info, 2))
 
 }
 
