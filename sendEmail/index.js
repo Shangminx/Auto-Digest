@@ -142,15 +142,33 @@ function sendMail(email_username, email_password, email_to, report_data) {
         html: emailContent,
         priority: "high"
     };
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            core.error(error);
-        } else {
-            core.info('Email sent: ' + info.response);
-        }
+    
+    const promiseWrapper = mailOptions => new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+        resolve(info);
     });
+        
+    let info;
+    let error;
 
+    for (let i = 0; i < 3; i++) {
+        try {
+          info = await promiseWrapper(mailOptions);
+          break;
+        } catch (e) {
+          error = e;
+        }
+    }
+    
+    if (error) {
+        core.error(error);
+    } else {
+        core.info('Email sent: ' + info.response);
+    }
 }
 
 module.exports = {
