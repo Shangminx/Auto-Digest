@@ -42,7 +42,7 @@ for retrytimes in range(tries):
                     newissue['issueAssignee'] = item['assignee']['login']
                 else:newissue['issueAssignee'] = None
 
-                if(date_object == utcdate):
+                if(date_object >= utcdate):
                     issueList.append(newissue)
 
             page = page + 1
