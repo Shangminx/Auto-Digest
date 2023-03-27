@@ -23,6 +23,6 @@ jobs:
         report_data: ${{ steps.getsummary.outputs.dailysummary }}
     - uses: plantree/github-actions-issue-notify-teams@main
       with:
-        type: daily-report
+        type: weekly-report
         message: ${{ steps.getsummary.outputs.dailysummary }}
         webhook: ${{ secrets.WEBHOOK }}
