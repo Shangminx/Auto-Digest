@@ -6,6 +6,11 @@ branding:
   icon: "book-open"
   color: "green"
 
+inputs:
+  daily_or_weekly:
+    description: "0 means daily summary 1 means weekly summary"
+    require: true
+
 outputs:
   dailysummary:
     description: "the daily summary of issues"
@@ -31,7 +36,7 @@ runs:
     id: pythonscript
     shell: bash
     run: | 
-      output=$(python .github/workflows/main.py)
+      output=$(python .github/workflows/main.py ${{ inputs.daily_or_weekly }})
       outputstr=${output//'/\'}
       echo "::set-output name=dailysummary::$output"
       echo "$outputstr"

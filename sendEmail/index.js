@@ -29,6 +29,7 @@ function main(email_username, email_password, email_to, report_data) {
 function sendMail(email_username, email_password, email_to, report_data) {
 
     var listcontent = ""
+    if(report_data.total == 0) return;
     for(let i = 0; i < report_data.total; i++)
     {
         listcontent = listcontent + `
@@ -103,7 +104,7 @@ function sendMail(email_username, email_password, email_to, report_data) {
                                         date = new Date().toLocaleDateString();
                                         document.write(date);
                                     </script>
-                                    Daily Issue List
+                                    Weekly Issue List
                             </p>
                         </td>
                     </tr>
@@ -138,9 +139,8 @@ function sendMail(email_username, email_password, email_to, report_data) {
     let mailOptions = {
         from: email_username,
         to: email_to,
-        subject: '[WV2 Github Feedback] Daily report on new issues',
-        html: emailContent,
-        priority: "high"
+        subject: '[WV2 Github Feedback] Weekly report on new issues',
+        html: emailContent
     };
 
     function retryFunc(error, info, times)
