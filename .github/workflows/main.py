@@ -33,7 +33,6 @@ for retrytimes in range(tries):
 
                 newissue = {}
                 newissue['issueName'] = item['title']
-                newissue['issueName'] = """asdf"t"""
                 newissue['issueLink'] = item['html_url']
                 tags = []
                 for label in item['labels']:
@@ -51,7 +50,7 @@ for retrytimes in range(tries):
         result = {'total': len(issueList), 'issueList': issueList}
         resultjson = json.dumps(result)
         print(resultjson)
-    except KeyError as e:
+    except e:
         if retrytimes < tries - 1:
             continue
         else:
