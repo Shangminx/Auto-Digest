@@ -2,6 +2,7 @@ import requests
 from datetime import datetime
 from datetime import timedelta
 import json
+import sys
 
 tries = 3
 for retrytimes in range(tries):
@@ -11,7 +12,10 @@ for retrytimes in range(tries):
         }
         baseurl = "https://api.github.com/repos/MicrosoftEdge/WebView2Feedback/issues"
 
-        utcdate = (datetime.utcnow() - timedelta(days = 1)).date()
+        scandays = 1
+        if (sys.argv[1] == 'weekly'):
+            scandays = 7
+        utcdate = (datetime.utcnow() - timedelta(days = scandays)).date()
         issueList = []
         scanover = False
         page = 1
@@ -29,6 +33,7 @@ for retrytimes in range(tries):
 
                 newissue = {}
                 newissue['issueName'] = item['title']
+                newissue['issueName'] = """asdf"t"""
                 newissue['issueLink'] = item['html_url']
                 tags = []
                 for label in item['labels']:
@@ -46,7 +51,7 @@ for retrytimes in range(tries):
         result = {'total': len(issueList), 'issueList': issueList}
         resultjson = json.dumps(result)
         print(resultjson)
-    except e:
+    except KeyError as e:
         if retrytimes < tries - 1:
             continue
         else:
