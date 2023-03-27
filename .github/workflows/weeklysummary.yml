@@ -13,7 +13,7 @@ jobs:
     - uses: shangminx/Auto-Digest@main
       id: getsummary
       with:
-        daily_or_weekly: 1
+        daily_or_weekly: 'weekly'
     - uses: shangminx/Auto-Digest/sendEmail@main
       id: sendEmail
       with: 

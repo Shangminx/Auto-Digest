@@ -13,7 +13,7 @@ jobs:
     - uses: shangminx/Auto-Digest@main
       id: getsummary
       with:
-        daily_or_weekly: 0
+        daily_or_weekly: 'daily'
     - uses: plantree/github-actions-issue-notify-teams@main
       with:
         type: daily-report

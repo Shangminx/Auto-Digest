@@ -13,7 +13,7 @@ for retrytimes in range(tries):
         baseurl = "https://api.github.com/repos/MicrosoftEdge/WebView2Feedback/issues"
 
         scandays = 1
-        if (sys.argv[1] == 1):
+        if (sys.argv[1] == 'weekly'):
             scandays = 7
         utcdate = (datetime.utcnow() - timedelta(days = scandays)).date()
         issueList = []
