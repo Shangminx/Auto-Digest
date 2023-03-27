@@ -21,8 +21,8 @@ jobs:
         sender_email:  ${{secrets.SENDER_EMAIL}}
         recipient_email: ${{secrets.RECIPIENT_EMAIL}}
         report_data: ${{ steps.getsummary.outputs.dailysummary }}
-   - uses: plantree/github-actions-issue-notify-teams@main
-     with:
-       type: daily-report
-       message: ${{ steps.getsummary.outputs.dailysummary }}
-       webhook: ${{ secrets.WEBHOOK }}
+    - uses: plantree/github-actions-issue-notify-teams@main
+      with:
+        type: daily-report
+        message: ${{ steps.getsummary.outputs.dailysummary }}
+        webhook: ${{ secrets.WEBHOOK }}
