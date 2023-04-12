@@ -31,6 +31,9 @@ for retrytimes in range(tries):
                     scanover = True
                     break
 
+                if item.__contains__('pull_request'):
+                    continue
+                    
                 newissue = {}
                 newissue['issueName'] = item['title']
                 newissue['issueLink'] = item['html_url']
